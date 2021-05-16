@@ -1,0 +1,30 @@
+<html>
+  <head>
+  </head>
+  <body>
+    This file is to check how 'this' in JavaSCript works
+  </body>
+
+  <script>
+    const testObject = (function() {
+
+      let _number = 1;
+
+      return {
+          //_number,
+          setNumber : function(number) {
+              this._number = number;
+          },
+          getNumber : function() {
+              return this._number;
+          }
+      }
+    })();
+
+    console.log(testObject);
+    console.log(testObject.getNumber());
+    testObject.setNumber(5);
+    console.log(testObject.getNumber());
+    console.log(testObject);
+  </script>
+</html>

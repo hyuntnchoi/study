@@ -1,0 +1,38 @@
+바벨이란 무엇인가?[0]
+	
+바벨은 자바스크립트 컴파일러이다.
+	주로 ECMAScript 2015 이후 버전의 코드와 이전 코드의 호환을 위해 사용되는 툴체인[1]이다.
+	
+바벨이 할 수 있는 것:
+	- 문법 변환
+	- 타겟 환경에 없는 폴리필(polyfill)
+	- 소스 코드 변환
+	- JSX[2] 문법 변환
+	- 타입 어노테이션 제거(바벨이 타입 체킹을 해주지는 않고, 타입 체크를 위해서는 여전히 Flow 또는 TypeScript를 설치/사용 해야 한다.)
+	- 디버깅: 'Source map' 지원으로 컴파일 된 코드를 쉽게 디버깅 할 수 있다
+	- 스펙 준수 : 가능한 ECMAScript 표준을 따르기 위해 노력
+	- 콤팩트(compact) : 가능한 적은 코드를 사용하도록 노력
+	And so on..
+
+	예시)
+	// Babel Input: ES2015 arrow function
+	[1, 2, 3].map(n => n + 1);
+
+	// Babel Output: ES5 equivalent
+	[1, 2, 3].map(function(n) {
+		return n + 1;
+	});
+	
+	더보기: the-super-tiny-compiler (https://github.com/jamiebuilds/the-super-tiny-compiler)
+
+====
+[1] 툴체인: 타켓을 실행 가능한 파일로 만들기 위해 필요한 컴팡일러와 링커, 라이브러리, 또는 어떤 툴들의 집합을 말한다.
+[2] JSX : XML/HTML과 비슷한 문법으로 ECMAScript를 확장한 리액트에서 사용 된다. 그래서 자바스크립트 코드 안에서 HTML 요소들을 직접 쓸 수 있게 한다.
+	예시) const myelement = <h1>Hello JSX</h1>
+	      ReactDOM.render(myelement, document.getElementById('root'));
+
+====
+출처:
+[0] https://babeljs.io/docs/en/
+[1] https://stackoverflow.com/questions/22756199/what-is-a-toolchain-and-a-cross-compiler
+	
