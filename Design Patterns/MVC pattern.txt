@@ -1,0 +1,63 @@
+내용: MVC pattern과 관련된 내용들
+분류: ==========
+분류 별 제목: <제목>
+
+===========================================================
+
+<MVC Pattern>
+
+source 1:
+https://www.bennadel.com/blog/2379-a-better-understanding-of-mvc-model-view-controller-thanks-to-steven-neiland.htm#:~:text=The%20service%20layer%20then%20returns,into%20a%20View%20for%20rendering.&text=The%20Controller%20makes%20too%20many,layer%20without%20passing%20in%20arguments.
+source 2:
+https://stackoverflow.com/questions/3885675/service-layer-and-controller-who-takes-care-of-what
+
+서비스 계층과 컨트롤러: 누가 무엇을 관리하는가?
+    
+
+
+MVC 패턴에 대한 더 나은 이해:
+
+
+===========================================================
+
+
+<DTO vs DAO>
+source1: https://stackoverflow.com/questions/14366001/dto-and-dao-concepts-and-mvc
+
+DTO is Data Transfer Object
+    - used to transfer the data btw classes and modules of your application
+    - DTO should only contain private fields for your data, getters, setters, and constructors
+    - not recommended to add business logic methods to such classes, but it is ok to add some util methods
+DAO is Data Access Object
+    - it should encapsulate the logic for retrieving, saving and updating data in your data storage (db, file system, whatever)
+
+ex)
+    interface PersonDTO {
+        Strinig getName();
+        void setName(String name);
+    }
+
+    interface PersonDAO {
+        PersonDTO findById(long id);
+        void save(PersonDTO person);
+    }
+
+source2: https://www.quora.com/What-is-the-difference-between-DTO-and-DAO
+
+These are very old patterns...
+DTO is a data transfer object. It's basically a value object used for passing structured data between tiers / layers
+DAO is a data access object. It is responsible for hiding implementation details about how your data is stored and how it is retrieved.
+
+source3: https://stackoverflow.com/questions/12565973/java-ee-dao-dto-data-transfer-object-design-patterns
+
+Detailed DAO example in source3
+
+source4: https://www.baeldung.com/java-dao-pattern
+
+DAO pattern's key concepts, how to implement it in Java, and how to use it on top of JPA's entity manager.
+
+================================================================
+
+
+
+
