@@ -12,10 +12,36 @@ source 2:
 https://stackoverflow.com/questions/3885675/service-layer-and-controller-who-takes-care-of-what
 
 서비스 계층과 컨트롤러: 누가 무엇을 관리하는가?
-    
-
+    컨트롤러: 
+        HTTP 파라미터 유효성 검사
+        어떤 service 메소드가 어떤 파라미터와 함께 호출될 지 결정
+        HTTP 세션 또는 request에 무엇을 넣을지
+        어떤 view 화면을 redirect 혹은 포워드 할 지
+        또는 비슷한 웹 관련 업무
+    서비스: 
+        애플리케이션 로직 관련 코드
 
 MVC 패턴에 대한 더 나은 이해:
+    컨트롤러:
+        컨트롤러의 역할은 요청을 받아서 응답으로 반환하는 것.
+        이를 위해, 요청 데이터를 받아서 그 데이터를 서비스 레이어로 전달해야 한다.
+        그러면 서비스 레이어가 데이터를 반환하고 그 데이터를 컨트롤러가 View 쪽으로 전달해서
+        렌더링 되도록 한다.
+        View는 HTML이 될 수도 있고, RESTful API를 위한 JSON 같은 것들이 될 수 있다.
+    뷰:
+        뷰의 역할은 데이터를 응답으로 시각 렌더링? 하는 것이다.
+    모델:
+        모델의 역할은 problem domain을 나타내고, 상태를 유지하고, 그리고 어플리케이션의 
+        상태에 접근하고 변형하기 위한 메서드를 제공하는 것이다.
+        모델 레이어는 전형적으로 몇 개의 다른 레이어로 나뉘어 진다.
+        >서비스 레이어: provies cohesive, high-level logic for related parts of an application.
+                       컨트롤러와 View Helper에 의해 직접 불러진다.
+        >데이터 접근 레이어: (ex. Data Gateway, DAO) this layer provides access to the 
+                            persistence layer. 
+                            이 레이어는 서비스 객체들에 의해서만 불러진다.
+                            데이터 접근 레이어의 객체들은 서로에 대해 알지 못한다.
+        >Value Object 레이어: provides simple, data-oriented representations of "leaf" nodes
+                             in your model hierarchy.
 
 
 ===========================================================
