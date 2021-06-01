@@ -1,0 +1,56 @@
+<앵귤러>
+
+>>필수 사항들:
+1. 컴포넌트
+- 컴포넌트라는 블록들이 쌓아 올려져 애플리케이션이 탄생한다. 컴포넌트의 구성은 @Component() decorator가 있는 타입스크립트 클래스, HTML 템플릿, 스타일들로 되어 있다.
+- @Component() decorator는 다음의 특정 앵귤러 정보를 나타낸다:
+	CSS 셀렉터
+	HTML 템플릿
+	CSS 스타일
+
+2. 템플릿
+- 모든 컴포넌트는 HTML 템플릿을 가지고, 이것은 inline 또는 file path에 의해 정의 된다.
+
+앵귤러는 컴포넌트로 부터 동적인 값을 넣을 수 있는 추가적인 문법을 제공한다. 앵귤러는 자동적으로 렌더링 된 DOM을 컴포넌트의 상태가 변할 때 업데이트 한다. 이것의 한 예시는 동적 텍스트를 넣는 것이다.
+
+앵귤러는 또한 HTML element의 perperty와 attribute의 값을 지정하고 그 값을 presentation logic에 전달하하기 위해 프로퍼티 바인딩을 지원한다. 
+
+이벤트 리스너 추가 또한 가능하다. <button (click)="sayMsg()" ~
+
+템플릿에 diretive를 이용해서 추가적인 기능을 추가할 수도 있는데, 앵귤러에서 가장 유명한 directive는 *ngIf와 *ngFor이다. 이러한 지시어들을 동적으로 DOM 구조를 수정할 수도 있꼬 훌륭한 UX를 위해 자기만의 custom directives도 만들 수 있다.
+
+3. Dependency injection
+- DI는 TypeScript 클래스들의 dependency들을 인스턴스화 없이 선언할 수 있도록 해준다. 대신 앵귤러가 이러한 인스턴스화를 관리한다. 이러한 디자인 패턴은 더 테스트 가능하고 유연한 코드를 작성하는 데 도움을 준다. 앵귤러 공식 홈페이지에서는, DI의 사용을 강력하게 추천하므로 잘 이해해서 잘 사용할 수 있도록 하면 좋을 것 같다.
+
+>>앵귤러 CLI:
+1. 앵귤러 CLI는 앵귤러 애플리케이션 개발에 있어  가장 빠르고, 쉽고, 추천되는 방식이다. 이 CLI는 몇 가지 일을 쉽게 만들어주는데, 아래에 일부 예제를 보자:
+- ng build: 컴파일을 한다.
+- ng serve: 빌드 후 서버 실행. 파일 변경 시 재 실행도 한다.
+- ng generate: 도식?에 기초해 파일들을 생성하거나 수정한다.
+- ng test: 유닛 테스트 실행
+- ng e2e: 빌드 후 애플리케이션 실행을 하고, 처음부터 끝까지 테스트를 수행한다.
+
+>>First-party libraries:
+- Angular Router: 앵귤러 컴포넌트들에 기초한 클라이언트 측 내비게이션&라우팅 제공
+- Angular Forms: 폼 입력과 검증을 위한 단일 시스템
+- Angular HttpClient: 더 나은 클라이언트/서버 간 통신을 가능하게 하는 견고한 HTTP 클라이언트
+- Angular Animations: 애플리케이션 상태에 따른 풍부한 애니메이션? 기능 제공
+- Angular PWA: 서비스 워커와 웹 앱 manifest를 포함한 Progressive Web Application을 위한 도구
+- Angular Schematics: 대규모 개발을 단순화 해주는 자동화된 비계(scaffolding), 리팩토링, 그리고 업데이트를 위한 도구
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
