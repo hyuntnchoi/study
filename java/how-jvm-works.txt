@@ -1,0 +1,69 @@
+source: geeksforgeeks.org
+
+- JVM is the one that actually calls the main method present in a java code
+- JVM is a part of JRE
+- *.java 파일을 컴파일하면 *.class 파일이 생기고, 실행하면 이 파일이 
+여러 단계를 거치는데 이러한 단계들이 JVM 전체를 설명한다.
+
+<JVM 구조>
+
+Class Loader
+
+JVM Memory
+	Method Area
+	Heap
+	JVM Language Stacks
+	PC Registers
+	Native Method Stacks
+
+Native Method Libraries
+
+Native Method Interface
+
+Execution Engine
+
+===
+- Class Loader는 주로 3가지 역할이 있다:
+	Loading
+	Linking
+	Initialization
+- Method Area
+	클래스명, 부모 클래스명, 메소드, 그리고 다양한 정보 등의
+	모든 클래스 레벨에서의 정보가 저장되어 있다.
+	JVM 마다 오직 하나의 method area가 존재하고, 공유되는 자원이다.
+- Heap Area
+	모든 객체들의 정보가 여기에 저장된다. JVM 마다 오직 하나의 
+	Heap Area가 존재하고, 공유되는 자원이다.
+- Stack Area
+	모든 쓰레드마다, JVM은 하나의 런타임 스택을 생성하고 이것이
+	Stack Area에 저장된다.
+- PC Registers
+	쓰레드의 current execution instruction 주소를 저장한다.
+	각각의 쓰레드마다 별도의 PC 레지스터를 가진다.
+- Native method stacks
+	For every thread, a separate native stack is created.
+	It stores native method information.
+
+===
+
+Execution Engine
+	.class(바이트코드) 파일을 실행한다. 바이트 코드를 한 줄씩 읽는데,
+	다양한 메모리 영역에 존재하는 데이터와 정보를 사용하고 명령을 실행한다.
+	위 내용을 3 부분으로 세분화 할 수 있는데;
+		- Interpreter: 한 줄씩 바이트코드를 해석하고 실행한다. 여기서
+		한 가지 단점은 만약 한 메소드가 여러번 불릴 경우 불릴 때 매번 
+		interpretation이 필요하다.
+		- Just-In-Time Compiler(JIT): 인터프리터의 효율을 높이기 위해 사용.
+		바이트코드 전ㅊ네를 컴파일해서 네이티브 코드로 변환한다. 그래서
+		인터프리터가 반복되는 메소드 콜을 보더라도 JIT가 네이티브 코드를 제공함으로써
+		re-interpretaion이 필요하지 않게 된다. 이렇게 효율이 올라간다.
+		Garbage Collector: un-referenced object들을 파괴한다. 
+
+Java Native Interface(JNI)
+	Native Method Library들과 상호작용하는 인터페이스. 실행에 필요한 
+	native libraries(C, C++)도 제공한다. 이것이 JVM으로 하여금 C/C++ 라이브러리들을 
+	호출할 수 있도록 한다. 또한 C/C++ 라이브러리(아마 하드웨어에 특수한)에 의해 
+	호출 당하기 위한 목적일 수도 있다.
+
+Native Method Libraries
+	아마 Execution Engine에 의해 요구 되는 native libraries(C, C++)의 콜렉션이다.
