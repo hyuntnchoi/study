@@ -1,0 +1,92 @@
+ElementRef
+TemplateRef
+ViewRef
+ComponentRef
+ViewContainerRef
+
+
+2 ways to query/access ref types w/i a Component/Directive:
+- ViewChild / ViewChildren
+	@ViewChild : returns a single refernce
+	@ViewChildren : returns a list of refs in the form of a QueryList
+	basic usage : 
+		@ViewChild(selector, {read: ReferenceType})
+		fieldName;
+
+- ContentChild / ContentChildren
+	the usage is similar to that of above.
+	the only diff is that it queries w/i the <ng-content>
+	projected elements of the component while the
+	@ViewChild queries w/i the template of the component.
+
+dom access via ElementRef
+	you can get hold of ElementRef in a Component or 
+	Directive in following ways:
+	1. DI
+		@Component({
+			selector: 'app-test',
+			template: '<div>this is test</div>'
+		})
+		export class TestComponent implements OnInit {
+			constructor(private element: ElementRef) {}
+
+			ngOnInit() {
+				console.log(this.element.nativeElement);
+			}
+		}
+
+		// Output:
+		<app-test>
+			<div>this is test</div>
+		</app-test>
+
+	2. using ViewChild and Template Reference Variables
+
+		@Component({
+			selector: 'app-test',
+			template: `
+				<div #child1>First Child</div>
+				<div>Second Child</div>
+			`
+		})
+		export class TestComponent implements OnInit {
+			@ViewChild("child1") firstChild: ElementRef;
+			constructor() {}
+			ngOnInit() {
+				console.log(this.firstChild.nativeElement);
+			}
+		}
+
+		// Output: <div>First Child</div>
+
+	3. using ContentChild
+		works in a similar manner as that of @ViewChild, but for
+		<ng-content> projected elements
+
+		// Child Component
+		@Component({
+			selector: "component-a",
+			template: `<ng-content></ng-content>`
+		})
+		export class ComponentA {
+			@ContentChild("contentChild") contentChild: ElementRef;
+
+			ngOnInit() {
+				console.log(this.contentChild.nativeElement);
+			}
+		}
+
+		// Parent Component
+		@Component({
+			selector: 'app-test',
+			template: `
+				<component-a>
+					<div #contentChild>Content Child 1</div>
+					<div>Content Child 2</div>
+				</component-a>
+			`
+		})
+		export class TestComponent implements OnInit {}
+
+		//Output: <div>Content Child 1</div>
+
