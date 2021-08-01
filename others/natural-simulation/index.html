@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>
+			Natural Simulation
+		</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="200" height="100"></canvas>
+
+		<!-- JavaScript Files -->
+		<script type="text/javascript" src="random-walker.js"></script>
+		<script type="text/javascript">
+			var rw = new rw("myCanvas");
+			
+			var interval = window.setInterval(function () {
+				rw.draw();
+			}, 500);
+		</script>
+	</body>
+</html>
