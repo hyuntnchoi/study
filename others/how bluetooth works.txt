@@ -1,3 +1,5 @@
+source: https://electronics.howstuffworks.com/bluetooth.htm
+
 블루투스는 어떻게 작동하는가?
 
 목차:
